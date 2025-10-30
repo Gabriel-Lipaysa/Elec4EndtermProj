@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 from flask import Flask, redirect, url_for
+=======
+from flask import Flask
+>>>>>>> 4d8501a9645ae7334eb7498fbc11ac6038fc7078
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 from flask_bcrypt import Bcrypt
 
+<<<<<<< HEAD
 # ------------------------------------------------------------
 # Flask App Configuration
 # ------------------------------------------------------------
@@ -42,3 +47,17 @@ from app.routes import user  # your user routes (auth, signup, etc.)
 @app.route('/')
 def default_redirect():
     return redirect(url_for('show_user_login'))
+=======
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:@127.0.0.1/elec4_endterm'
+app.secret_key='SECRET_KEY'
+
+db = SQLAlchemy(app)
+migrate = Migrate(app,db)
+csrf = CSRFProtect(app)
+bcrypt = Bcrypt(app)
+
+from .models import user, products, carts, orders
+from .routes import admin
+>>>>>>> 4d8501a9645ae7334eb7498fbc11ac6038fc7078

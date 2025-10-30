@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+<<<<<<< HEAD
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
@@ -32,3 +33,12 @@ class UserRegisterForm(FlaskForm):
         EqualTo('password', message='Passwords must match.')
     ])
     submit = SubmitField('Register')
+=======
+from wtforms import StringField, PasswordField,SubmitField
+from wtforms.validators import DataRequired,Length
+
+class AdminLoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(),Length(min=6)])
+    submit = SubmitField('Login')
+>>>>>>> 4d8501a9645ae7334eb7498fbc11ac6038fc7078
